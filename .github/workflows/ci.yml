@@ -16,6 +16,9 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Install pnpm
+        run: npm install -g pnpm
+
       - name: Restore pnpm store cache
         uses: actions/cache@v4
         with:
