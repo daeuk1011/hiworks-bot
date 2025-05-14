@@ -39,4 +39,4 @@ RUN pnpm config set store-dir /root/.pnpm-store && \
 # 빌드 결과물 복사
 COPY --from=builder /app/dist ./dist
 
-CMD ["node", "dist/index.js"]
+CMD ["pnpm", "start:prod"]
