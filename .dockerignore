@@ -1,0 +1,11 @@
+.git
+node_modules
+dist
+.github
+.vscode
+tests
+*.md
+*.log
+.env
+.env.*
+cspell.json
