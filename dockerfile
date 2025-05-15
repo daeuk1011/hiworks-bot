@@ -62,7 +62,4 @@ RUN pnpm config set store-dir /root/.pnpm-store && \
 # 빌드 결과물 복사
 COPY --from=builder /app/dist ./dist
 
-# 비루트 사용자 실행
-USER node
-
 CMD ["pnpm", "start:prod"]
