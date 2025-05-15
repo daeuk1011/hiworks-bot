@@ -11,9 +11,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
 # Playwright 의존성 설치 (Chromium만)
-RUN pnpm create playwright@1.52.0 && \
-    cd /tmp && pnpm exec playwright install --with-deps chromium && \
-    rm -rf /tmp/node_modules
+RUN pnpm add playwright@1.52.0 && \
+    pnpm exec playwright install --with-deps chromium
 
 WORKDIR /app
 
