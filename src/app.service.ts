@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, OnModuleInit } from '@nestjs/common';
 import { chromium } from 'playwright';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { parseICS } from 'node-ical';
@@ -21,8 +21,12 @@ type SlackPostMessageResponse = {
 };
 
 @Injectable()
-export class AppService {
+export class AppService implements OnModuleInit {
   constructor(private readonly configService: ConfigService) {}
+
+  async onModuleInit() {
+    await this.getHolidayByGoogleCalendar();
+  }
 
   getHello(): string {
     return 'Hello World!';
