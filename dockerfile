@@ -43,6 +43,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgbm1 \
     libpango-1.0-0 \
     libasound2 \
+    libxfixes3 \
+    libx11-6 \
+    libxext6 \
+    libx11-xcb1 \
+    libxcb1 \
+    libglib2.0-0 \
+    libexpat1 \
+    fonts-liberation \
+    libjpeg-turbo8 \
+    libpng16-16 \
+    libwebp7 \
+    libwoff1 \
+    libopus0 \
+    libharfbuzz-icu0 \
+    ttf-freefont \
     && rm -rf /var/lib/apt/lists/*
 
 # Playwright 브라우저 복사
