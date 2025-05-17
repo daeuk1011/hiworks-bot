@@ -30,35 +30,7 @@ RUN pnpm build
 FROM node:22-bookworm-slim
 
 # Playwright 실행에 필요한 시스템 의존성
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libnss3 \
-    libatk1.0-0 \
-    libatk-bridge2.0-0 \
-    libcups2 \
-    libdrm2 \
-    libxkbcommon0 \
-    libxcomposite1 \
-    libxdamage1 \
-    libxrandr2 \
-    libgbm1 \
-    libpango-1.0-0 \
-    libasound2 \
-    libxfixes3 \
-    libx11-6 \
-    libxext6 \
-    libx11-xcb1 \
-    libxcb1 \
-    libglib2.0-0 \
-    libexpat1 \
-    fonts-liberation \
-    libjpeg-turbo8 \
-    libpng16-16 \
-    libwebp7 \
-    libwoff1 \
-    libopus0 \
-    libharfbuzz-icu0 \
-    ttf-freefont \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y chromium && rm -rf /var/lib/apt/lists/*
 
 # Playwright 브라우저 복사
 COPY --from=builder /root/.cache/ms-playwright /root/.cache/ms-playwright
