@@ -220,10 +220,19 @@ export class AppService implements OnModuleInit {
       if (!HIWORKS_LOGIN_PAGE_URI)
         throw new BadRequestException('하이웍스 로그인 URL을 찾을 수 없어요');
 
-      await page.goto(HIWORKS_LOGIN_PAGE_URI);
+      console.log('🔍 페이지 접속 시도 중...');
+
+      await page.goto(HIWORKS_LOGIN_PAGE_URI, {
+        waitUntil: 'load',
+        timeout: 30000,
+      });
+
+      console.log('🔍 페이지 접속 시도 중...');
 
       await page.waitForSelector('input[placeholder="로그인 ID"]');
       await page.getByPlaceholder('로그인 ID').fill(HIWORKS_LOGIN_EMAIL);
+
+      console.log('➡️ 다음 버튼 클릭 중...');
 
       await page.getByRole('button', { name: '다음' }).click();
 
